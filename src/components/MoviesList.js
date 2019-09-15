@@ -3,9 +3,11 @@ import { connect } from "react-redux";
 import { fetchMovies } from "../actions/moviesActions";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+import Pagination from "./Pagination";
+
 class MoviesList extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchMovies());
+    this.props.dispatch(fetchMovies("https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc"));
   }
 
   render() {
@@ -37,8 +39,8 @@ class MoviesList extends React.Component {
 
         </div>
         <div>
-          Page {movies.page} of {movies.total_pages}
-        </div>
+          <Pagination />
+          </div>
       </div>
     );
   }

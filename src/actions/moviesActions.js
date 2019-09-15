@@ -21,10 +21,10 @@ export const fetchMoviesFailure = error => ({
   payload: { error }
 });
 
-export function fetchMovies() {
+export function fetchMovies(url) {
   return dispatch => {
     dispatch(fetchMoviesBegin());
-    return axios.get("https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=010101bd73f000479a48f9b9375dd25a")
+    return axios.get(url + "&api_key=010101bd73f000479a48f9b9375dd25a")
       .then(res => {
         dispatch(fetchMoviesSuccess(res.data));
         return res.data;
